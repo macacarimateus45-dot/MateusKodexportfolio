@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- SESSÃO 1: HISTÓRIA (NO INÍCIO DO SITE) -->
+<section id="historia" class="cyber-section">
+    <h1 id="typing-effect" class="logo" style="font-size: 2.2rem;"></h1>
+    <h2 class="cyber-title">&gt; Minha História</h2>
+    <div class="cyber-card">
+        <p>Olá! Sou o **Mateus Antonio**. Minha jornada na tecnologia começou com a fascinação por entender como os sistemas funcionam por dentro e como protegê-los contra ameaças no espaço cibernético.</p>
+        <p>Desenvolvi habilidades sólidas em arquitetura e desenvolvimento **Full Stack**, criando aplicações escaláveis e intuitivas. Simultaneamente, especializei-me em **Cybersecurity (Pentesting)**, permitindo-me ter uma visão dupla de projetos: construir sistemas robustos e garantir que estejam blindados contra vulnerabilidades.</p>
+    </div>
+</section>
+
+<!-- SESSÃO 2: PROJETOS FULL STACK -->
+<section id="fullstack" class="cyber-section">
+    <h2 class="cyber-title">&gt; Amostras Full Stack</h2>
+    <div class="grid">
+        {% for item in fullstack %}
+        <div class="cyber-card">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
+            {% for tech in item.techs %}
+                <span class="badge">{{ tech }}</span>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- SESSÃO 3: PROJETOS PENTESTING / CYBERSECURITY -->
+<section id="pentest" class="cyber-section">
+    <h2 class="cyber-title">&gt; Amostras Pentesting & Security</h2>
+    <div class="grid">
+        {% for item in pentest %}
+        <div class="cyber-card">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
+            {% for tech in item.techs %}
+                <span class="badge">{{ tech }}</span>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- SESSÃO 4: CONTATO -->
+<section id="contato" class="cyber-section">
+    <h2 class="cyber-title">&gt; Canais de Contato</h2>
+    <div class="grid">
+        <div class="cyber-card">
+            <p><strong>📱 Telefone / WhatsApp:</strong> +55 14 99632-5166</p>
+            <p><strong>📧 E-mail:</strong> mateusantoniostack@gmail.com</p>
+        </div>
+        <div class="cyber-card">
+            <form action="{{ url_for('salvar_contato') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <input type="text" name="nome" placeholder="Seu Nome" class="cyber-input" required>
+                <input type="email" name="email" placeholder="Seu E-mail" class="cyber-input" required>
+                <textarea name="mensagem" placeholder="Sua Mensagem" class="cyber-input" rows="4" required></textarea>
+                <button type="submit" class="cyber-btn">ENVIAR MENSAGEM</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

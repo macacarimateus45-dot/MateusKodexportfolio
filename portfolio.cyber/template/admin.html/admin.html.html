@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="cyber-section active">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 class="cyber-title">&gt; Terminal Administrativo Privado</h2>
+        <a href="{{ url_for('logout') }}" class="cyber-btn" style="text-decoration: none;">LOGOUT</a>
+    </div>
+
+    <h3>Mensagens Recebidas no Mainframe:</h3>
+    {% for msg in mensagens %}
+        <div class="cyber-card" style="margin-bottom: 10px;">
+            <p><strong>De:</strong> {{ msg.nome }} ({{ msg.email }})</p>
+            <p><strong>Mensagem:</strong> {{ msg.mensagem }}</p>
+        </div>
+    {% else %}
+        <p>Nenhuma mensagem recebida até o momento.</p>
+    {% endfor %}
+</section>
+{% endblock %}

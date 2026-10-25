@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="cyber-section active" style="max-width: 400px; margin: 5rem auto;">
+    <h2 class="cyber-title">&gt; Autenticação de Acesso Privado</h2>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div style="color: #ff4d4d; margin-bottom: 10px;">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="cyber-card">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <label>Usuário:</label>
+        <input type="text" name="username" class="cyber-input" required>
+        
+        <label>Chave de Acesso (Senha):</label>
+        <input type="password" name="password" class="cyber-input" required>
+        
+        <button type="submit" class="cyber-btn" style="width: 100%;">ENTRAR</button>
+    </form>
+</section>
+{% endblock %}

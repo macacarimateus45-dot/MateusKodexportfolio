@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateus Antonio | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">&lt;MATEUS_ANTONIO/&gt;</div>
+        <div class="nav-links">
+            <a href="#historia">// História</a>
+            <a href="#fullstack">// Full Stack</a>
+            <a href="#pentest">// Pentesting</a>
+            <a href="#contato">// Contato</a>
+            <a href="{{ url_for('login') }}">[ADM]</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
